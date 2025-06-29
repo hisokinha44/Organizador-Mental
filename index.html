@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizador mental</title>
+    <link rel="icon" href="assets/.ico/brain-solid.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    < <style>
+        .section-container {
+        transition: all 0.3s ease;
+        }
+
+        .section-container:hover {
+        transform: translateY(-2px);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+        background: #1e293b;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #3b82f6;
+        border-radius: 3px;
+        }
+
+        .fade-in {
+        animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+        from {
+        opacity: 0;
+        transform: translateY(10px);
+        }
+
+        to {
+        opacity: 1;
+        transform: translateY(0);
+        }
+        }
+        </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-6 max-w-md">
+        <header class="flex items-center justify-between mb-8">
+            <div class="flex items-center">
+                <i class="fas fa-brain text-blue-500 text-2xl mr-3"></i>
+                <h1 class="text-2xl font-bold text-blue-400">Organizador mental</h1>
+            </div>
+            <button id="newSectionBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
+                <i class="fas fa-plus mr-1"></i> Nova seção
+            </button>
+        </header>
+
+        <main>
+            <div id="sectionsContainer" class="space-y-4 custom-scrollbar max-h-[70vh] overflow-y-auto pb-4">
+            </div>
+
+            <div id="emptyState" class="text-center py-12">
+                <i class="fas fa-sticky-note text-blue-500 text-5xl mb-4"></i>
+                <h2 class="text-xl font-semibold mb-2">Sem seções ainda</h2>
+                <p class="text-gray-400 mb-4">Crie sua primeira seção e organize seus pensamentos</p>
+                <button id="emptyStateBtn"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition">
+                    Criar seção
+                </button>
+            </div>
+        </main>
+
+        <div id="newSectionModal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-gray-800 rounded-lg p-6 w-full max-w-sm mx-4 fade-in">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Criar nova seção</h3>
+                    <button id="closeModalBtn" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <input type="text" id="sectionTitleInput" placeholder="Título da seção"
+                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex justify-end space-x-3">
+                    <button id="cancelSectionBtn"
+                        class="px-4 py-2 rounded-lg border border-gray-600 hover:bg-gray-700 transition">Cancelar</button>
+                    <button id="saveSectionBtn"
+                        class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition">Crie</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="newSubsectionModal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-gray-800 rounded-lg p-6 w-full max-w-sm mx-4 fade-in">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Criar nova sub-seção</h3>
+                    <button id="closeSubsectionModalBtn" class="text-gray-400 hover:text-white">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <input type="text" id="subsectionTitleInput" placeholder="Título de subseção"
+                    class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex justify-end space-x-3">
+                    <button id="cancelSubsectionBtn"
+                        class="px-4 py-2 rounded-lg border border-gray-600 hover:bg-gray-700 transition">Cancelar</button>
+                    <button id="saveSubsectionBtn"
+                        class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition">Criar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
